@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para Ti, Mi Rabanita - 14 de Febrero 2026</title>
+    <title>Para Ti, Mi Amor - 14 de Febrero 2026</title>
     <style>
         * {
             margin: 0;
@@ -165,24 +165,27 @@
             width: 100%;
             background: rgba(10, 10, 10, 0.95);
             backdrop-filter: blur(10px);
-            padding: 20px 40px;
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
             box-shadow: 0 4px 20px rgba(255, 26, 117, 0.2);
+            overflow: hidden;
         }
 
         nav .logo {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: bold;
             animation: glow 2s ease-in-out infinite;
+            flex-shrink: 0;
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            gap: 40px;
+            gap: 30px;
+            align-items: center;
         }
 
         nav a {
@@ -190,23 +193,540 @@
             text-decoration: none;
             transition: all 0.3s ease;
             font-weight: 500;
+            font-size: 0.95rem;
         }
 
         nav a:hover {
             color: var(--primary);
             text-shadow: 0 0 10px var(--primary);
         }
+        
+        /* Hamburger menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            background: none;
+            border: none;
+        }
+        
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(10px, 10px);
+        }
+        
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        @media (max-width: 1200px) {
+            section {
+                padding: 60px 30px;
+            }
+            section h2 {
+                font-size: 2.5rem;
+            }
+        }
 
         @media (max-width: 768px) {
             nav {
-                flex-direction: column;
-                gap: 20px;
-                padding: 15px 20px;
+                padding: 12px 15px;
             }
+            
+            nav .logo {
+                font-size: 1.1rem;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
             nav ul {
+                display: none;
+                flex-direction: column;
+                gap: 0;
+                position: fixed;
+                width: calc(100% + 20px);
+                left: -10px;
+                right: 0;
+                top: 70px;
+                background: rgba(10, 10, 10, 0.98);
+                padding: 15px 20px;
+                border-top: 2px solid var(--primary);
+                max-height: calc(100vh - 70px);
+                overflow-y: auto;
+                order: 3;
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            nav ul li {
+                padding: 10px 0;
+                border-bottom: 1px solid rgba(255, 26, 117, 0.2);
+            }
+            
+            nav ul li:last-child {
+                border-bottom: none;
+            }
+            
+            nav a {
+                font-size: 0.95rem;
+            }
+            
+            section { 
+                padding: 50px 20px;
+                min-height: auto;
+                margin-top: 100px;
+            }
+            
+            section h2 { 
+                font-size: 1.8rem;
+                margin-bottom: 30px;
+            }
+            
+            .hero-content h1 { 
+                font-size: 1.8rem;
+            }
+            
+            .hero-icon { 
+                font-size: 3rem;
+                margin: 20px 0;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .cta-button {
+                font-size: 0.9rem;
+                padding: 12px 24px;
+                margin: 10px 5px;
+            }
+            
+            #razones {
+                height: auto;
+                min-height: 100vh;
+            }
+            
+            #galaxyCanvas {
+                height: 60vh !important;
+                width: 100% !important;
+            }
+            
+            /* GALERÍA DE CORAZONES RESPONSIVA */
+            #heartGallery {
+                width: 100% !important;
+                max-width: 100% !important;
+                height: 400px !important;
+            }
+            
+            .heart-img {
+                width: 90px !important;
+                height: 90px !important;
+                border: 2px solid #ff1a75 !important;
+            }
+            
+            #momentos {
+                padding: 50px 15px;
+            }
+            
+            #momentos > div {
+                height: auto !important;
+            }
+            
+            #momentos button {
+                width: 45px !important;
+                height: 45px !important;
+                font-size: 1.3rem !important;
+                left: 10px !important;
+                right: auto !important;
+            }
+            
+            #momentos button:last-of-type {
+                left: auto !important;
+                right: 10px !important;
+            }
+            
+            #sliderIndicators {
+                gap: 8px !important;
+                margin-top: 30px !important;
+            }
+            
+            .slider-indicator {
+                width: 10px !important;
+                height: 10px !important;
+            }
+            
+            /* CARTAS */
+            .love-letters {
+                grid-template-columns: 1fr !important;
+                gap: 20px;
+            }
+            
+            .letters-grid {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+            }
+            
+            .letter-card {
+                padding: 20px;
+                font-size: 0.9rem;
+            }
+            
+            .letter-card h3 {
+                font-size: 1.3rem;
+            }
+            
+            .timeline::before { 
+                left: 5px !important;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                margin-left: 0 !important;
+                text-align: left !important;
+                padding-left: 40px !important;
+            }
+            
+            .timeline-content {
+                border-left: 3px solid var(--primary) !important;
+            }
+            
+            .timeline-dot {
+                left: -10px !important;
+                right: auto !important;
+            }
+            
+            .timeline-content h3 {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            :root {
+                --primary: #ff1a75;
+                --secondary: #ff69b4;
+                --dark: #0a0a0a;
+                --light: #fff;
+                --accent: #ffd700;
+            }
+            
+            html, body {
+                font-size: 14px;
+            }
+            
+            nav {
+                padding: 10px 10px;
+            }
+            
+            nav .logo {
+                font-size: 1rem;
+            }
+            
+            .menu-toggle {
+                z-index: 1001;
+            }
+            
+            .menu-toggle span {
+                width: 22px;
+                height: 2.5px;
+            }
+            
+            nav ul {
+                top: 50px !important;
+                padding: 10px 15px !important;
+                width: calc(100% + 30px) !important;
+                left: -15px !important;
+            }
+            
+            nav a {
+                font-size: 0.87rem;
+                white-space: nowrap;
+            }
+            
+            /* Carrusel de cartas para móvil */
+            .letters-carousel {
+                display: flex !important;
+                flex-direction: row !important;
+                height: auto !important;
+                overflow-x: scroll !important;
+                overflow-y: hidden !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+                gap: 0 !important;
+                scroll-behavior: smooth;
+                scroll-snap-type: x mandatory;
+                padding: 0 !important;
+            }
+            
+            .letters-carousel .letter-card {
+                min-width: 100% !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                height: auto !important;
+                min-height: 500px !important;
+                flex-shrink: 0;
+                overflow-y: auto;
+                padding: 30px 20px !important;
+                border-radius: 0 !important;
+                margin: 0 !important;
+                box-sizing: border-box;
+                scroll-snap-align: start;
+            }
+            
+            .letters-controls {
+                display: flex;
                 gap: 15px;
-                flex-wrap: wrap;
                 justify-content: center;
+                align-items: center;
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+            
+            .letters-btn {
+                background: linear-gradient(135deg, var(--primary), var(--secondary));
+                border: 2px solid var(--accent);
+                color: #fff;
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+                font-size: 1.5rem;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+            }
+            
+            .letters-btn:active {
+                transform: scale(0.95);
+            }
+            
+            .letter-counter {
+                color: var(--secondary);
+                font-weight: bold;
+                min-width: 60px;
+                text-align: center;
+                font-size: 0.9rem;
+            }
+            
+            section {
+                padding: 40px 15px;
+                min-height: auto;
+                margin-top: 70px;
+            }
+            
+            section h2 {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+            
+            section p {
+                font-size: 0.9rem;
+            }
+            
+            .hero {
+                min-height: 90vh;
+                padding: 40px 15px;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.5rem;
+            }
+            
+            .hero-icon {
+                font-size: 2.5rem;
+                margin: 15px 0;
+            }
+            
+            .hero-content p {
+                font-size: 0.9rem;
+            }
+            
+            .cta-button {
+                font-size: 0.85rem;
+                padding: 10px 18px;
+                margin: 8px 3px;
+            }
+            
+            /* Galaxia 3D responsiva */
+            #razones {
+                height: auto;
+                min-height: 80vh;
+                padding: 30px 10px;
+            }
+            
+            #razones > h2 {
+                font-size: 1.3rem;
+            }
+            
+            #galaxyCanvas {
+                height: 50vh !important;
+                width: 100% !important;
+            }
+            
+            /* Galería de corazones ultra compacta */
+            #momentos {
+                height: auto;
+                padding: 30px 10px;
+            }
+            
+            #heartGallery {
+                width: 100% !important;
+                height: 320px !important;
+                max-width: 320px !important;
+                margin: 0 auto !important;
+            }
+            
+            .heart-img {
+                width: 70px !important;
+                height: 70px !important;
+                border: 2px solid #ff1a75 !important;
+            }
+            
+            /* Botones de galería más grandes para toque */
+            #momentos button {
+                width: 40px !important;
+                height: 40px !important;
+                font-size: 1.2rem !important;
+                left: 5px !important;
+                right: auto !important;
+            }
+            
+            #momentos button:last-of-type {
+                left: auto !important;
+                right: 5px !important;
+            }
+            
+            #sliderIndicators {
+                gap: 6px !important;
+                margin-top: 25px !important;
+                flex-wrap: wrap;
+            }
+            
+            .slider-indicator {
+                width: 8px !important;
+                height: 8px !important;
+            }
+            
+            /* Cartas */
+            .love-letters {
+                grid-template-columns: 1fr !important;
+                gap: 15px;
+            }
+            
+            .letter-card {
+                padding: 15px;
+                font-size: 0.85rem;
+                margin: 0;
+            }
+            
+            .letter-card h3 {
+                font-size: 1.1rem;
+                margin-bottom: 10px;
+            }
+            
+            .letter-card p {
+                font-size: 0.8rem;
+                line-height: 1.4;
+            }
+            
+            .special-envelope {
+                padding: 15px;
+            }
+            
+            /* Timeline móvil optimizado */
+            .timeline {
+                padding: 0 10px;
+            }
+            
+            .timeline::before {
+                left: 10px !important;
+                height: calc(100% - 20px) !important;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                margin-left: 0 !important;
+                margin-bottom: 30px !important;
+                text-align: left !important;
+                padding-left: 40px !important;
+                padding-right: 0 !important;
+                position: relative;
+            }
+            
+            .timeline-content {
+                border-left: 2px solid var(--primary) !important;
+                border-right: none !important;
+                padding: 12px 15px !important;
+                background: rgba(255, 26, 117, 0.08) !important;
+                margin-top: 0;
+            }
+            
+            .timeline-content h3 {
+                font-size: 1rem;
+                margin: 0 0 8px 0;
+                color: var(--primary);
+            }
+            
+            .timeline-content p {
+                font-size: 0.8rem;
+                line-height: 1.3;
+                margin: 0;
+            }
+            
+            .timeline-dot {
+                width: 12px !important;
+                height: 12px !important;
+                left: 4px !important;
+                right: auto !important;
+                border-width: 2px !important;
+                top: 5px !important;
+            }
+            
+            /* Final section */
+            #final {
+                padding: 30px 15px;
+            }
+            
+            #final h2 {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+            
+            #final p {
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+            
+            /* Footer */
+            footer {
+                padding: 20px 15px;
+                font-size: 0.85rem;
+            }
+            
+            /* Scroll to top button */
+            .scroll-to-top {
+                width: 40px !important;
+                height: 40px !important;
+                font-size: 1.3rem !important;
+                bottom: 20px !important;
+                right: 15px !important;
             }
         }
 
@@ -581,6 +1101,14 @@
         }
 
         /* CARTAS */
+        .letters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
         .letter-card {
             background: #FFF8DC;
             border: 3px solid #8B4513;
@@ -821,27 +1349,6 @@
             animation: fall 3s ease-in linear forwards;
         }
 
-        @media (max-width: 768px) {
-            section { padding: 60px 20px; }
-            section h2 { font-size: 2rem; }
-            .hero-content h1 { font-size: 2rem; }
-            .hero-icon { font-size: 3rem; }
-            .reasons-container { height: 600px; }
-            .timeline::before { left: 0; }
-            .timeline-item {
-                width: 100%;
-                margin-left: 0 !important;
-                text-align: left !important;
-                padding-left: 50px !important;
-            }
-            .timeline-content {
-                border-left: 3px solid var(--primary) !important;
-            }
-            .timeline-dot {
-                left: -10px !important;
-                right: auto !important;
-            }
-        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/three@0.148.0/build/three.min.js"></script>
 </head>
@@ -850,7 +1357,12 @@
         <!-- NAVEGACIÓN -->
         <nav>
             <div class="logo">💗 Mi Amor 💗</div>
-            <ul>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul id="navMenu">
                 <li><a href="#hero" onclick="scrollToSection('hero')">Inicio</a></li>
                 <li><a href="#razones" onclick="scrollToSection('razones')">Razones</a></li>
                 <li><a href="#momentos" onclick="scrollToSection('momentos')">Momentos</a></li>
@@ -863,9 +1375,12 @@
         <!-- HERO -->
         <section id="hero" class="hero">
             <div class="hero-content">
-                <h1>Feliz 14 de Febrero</h1>
+                <h1>Feliz 14 de Febrero, mi rabanita 🌹</h1>
                 <div class="hero-icon">❤️</div>
-                <p>Un día especial para alguien más especial aún</p>
+                <p>Un día especial para la persona más especial del universo</p>
+                <div style="margin-top: 20px; font-style: italic; color: #ffb4d1; font-size: 1.1rem;">
+                    ~ Porque tú eres mi reina, mi pedacito de cielo ~
+                </div>
                 <div>
                     <button class="cta-button" onclick="scrollToSection('razones')">Descubre Mi Amor</button>
                     <button class="cta-button" onclick="createHeartRain()">✨ Sorpresa ✨</button>
@@ -877,16 +1392,17 @@
         <section id="razones" style="position: relative; height: 100vh; overflow: hidden; display: flex; align-items: center; justify-content: center;">
             <canvas id="galaxyCanvas" style="display: block; width: 100%; height: 100%;"></canvas>
             <div style="position: absolute; top: 80px; left: 0; right: 0; text-align: center; pointer-events: none; z-index: 10;">
-                <h2 style="margin: 0; font-size: 2.5em; text-shadow: 0 0 20px var(--primary);">🌌 Mis Razones Para Amarte 🌌</h2>
-                <p style="margin: 10px 0 0 0; color: #b0b0b0; font-style: italic; text-shadow: 0 0 10px rgba(0,0,0,0.8);">Cada razón es una estrella en mi cielo ✨</p>
+                <h2 style="margin: 0; font-size: 2.5em; text-shadow: 0 0 20px var(--primary);">🌌 Por Qué Te Amo, Mi Reina 🌌</h2>
+                <p style="margin: 10px 0 0 0; color: #b0b0b0; font-style: italic; text-shadow: 0 0 10px rgba(0,0,0,0.8);">50 razones por las que eres mi pedacito de cielo ✨</p>
             </div>
         </section>
 
         <!-- MOMENTOS -->
         <section id="momentos">
             <h2>💖 Nuestros Momentos 💖</h2>
-            <p style="text-align: center; color: #b0b0b0; margin-bottom: 60px; font-style: italic;">
-                Cada momento es una razón más para amarte ✨
+            <p style="text-align: center; color: #b0b0b0; margin-bottom: 30px; font-style: italic;">
+                Cada momento contigo es un regalo, mi rabanita ✨<br>
+                <span style="color: #ffb4d1; font-size: 1.1rem;">Mi reina, cada recuerdo con mi pedacito de cielo 💕</span>
             </p>
             
             <div style="position: relative; width: 100%; max-width: 1200px; margin: 0 auto; height: 700px; display: flex; align-items: center; justify-content: center;">
@@ -955,41 +1471,49 @@
 
         <!-- CARTAS -->
         <section id="cartas">
-            <h2>💌 Cartas De Amor</h2>
+            <h2>💌 Cartas De Amor 💌</h2>
             <p style="text-align: center; color: #b0b0b0; margin-bottom: 60px; font-style: italic;">
-                Escritas desde lo más profundo de mi corazón
+                Para ti, mi rabanita, mi reina, mi pedacito de cielo<br>
+                <span style="color: #ffb4d1; font-size: 1.1rem;">Escritas desde lo más profundo de mi corazón 💕</span>
             </p>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto;">
+            <div class="letters-grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto;">
                 <div class="letter-card">
                     <div class="wax-seal">❤️</div>
                     <div class="letter-date">14 de Febrero de 2026</div>
-                    <div class="letter-greeting">Mi Reina,</div>
+                    <div class="letter-greeting">Mi Rabanita,</div>
                     <div class="letter-body">
-                        Quería escribirte esta carta para decirte lo que mi corazón siente cada día. Eres la razón de mis sonrisas más profundas, la calma en mis tormentas. Te amo más de lo que las palabras pueden expresar.
+                        Quería escribirte esta carta para decirte lo que mi corazón siente cada día contigo. Eres la razón de mis sonrisas más profundas, la calma en mis tormentas. Mi reina, te amo más de lo que las palabras pueden expresar. Eres mi pedacito de cielo en este mundo.
                     </div>
-                    <div class="letter-signature">Con todo mi amor,<br>Tu peque 💕</div>
+                    <div class="letter-signature">Con todo mi amor,<br>Tu peque que te adora 💕</div>
                 </div>
 
                 <div class="letter-card">
                     <div class="wax-seal">✨</div>
-                    <div class="letter-date">Desde mi Corazón</div>
-                    <div class="letter-greeting">Mi Amor,</div>
+                    <div class="letter-date">A Mi Reina</div>
+                    <div class="letter-greeting">Mi Pedacito de Cielo,</div>
                     <div class="letter-body">
-                        Cada mañana despierto agradecido de que existas. Tu risa es mi canción favorita, tus ojos son mi galaxia. No hay palabras que puedan expresar lo mucho que te amo. Eres mi todo, mi infinito.
+                        Cada mañana despierto agradecido de que existas. Tu risa es mi canción favorita, tus ojos son mi galaxia. No hay palabras que puedan expresar lo mucho que te amo. Eres mi todo, mi infinito, mi razón de vivir.
                     </div>
-                    <div class="letter-signature">Eternamente tuyo,<br>Tu Amor 💗</div>
+                    <div class="letter-signature">Eternamente tu peque,<br>Quien te adora 💗</div>
                 </div>
 
                 <div class="letter-card">
                     <div class="wax-seal">🌹</div>
                     <div class="letter-date">En Este Día Especial</div>
-                    <div class="letter-greeting">Amor Mío,</div>
+                    <div class="letter-greeting">Mi Rabanita,</div>
                     <div class="letter-body">
-                        Te escribo para confesarte que cada momento contigo es invaluable. Eres la persona más hermosa, no solo exterior, sino por la bondad infinita de tu corazón. Te amo sin condiciones.
+                        Te escribo para confesarte que cada momento contigo es invaluable. Eres la reina más hermosa, no solo exterior, sino por la bondad infinita de tu corazón. Eres mi pedacito de cielo en la tierra, y te amo sin condiciones.
                     </div>
-                    <div class="letter-signature">Por Siempre Tuyo,<br>Tu Amor 💕</div>
+                    <div class="letter-signature">Por Siempre Tuyo,<br>Tu Peque 💕</div>
                 </div>
+            </div>
+
+            <!-- Controles del carrusel para móvil -->
+            <div class="letters-controls" id="lettersControls" style="display: none;">
+                <button class="letters-btn" id="lettersPrev">❮</button>
+                <div class="letter-counter"><span id="letterIndex">1</span> / 3</div>
+                <button class="letters-btn" id="lettersNext">❯</button>
             </div>
 
             <div class="special-envelope">
@@ -1010,7 +1534,10 @@
 
         <!-- TIMELINE -->
         <section id="timeline">
-            <h2>🎯 Nuestro Viaje</h2>
+            <h2>🎯 Nuestro Viaje 🎯</h2>
+            <p style="text-align: center; color: #b0b0b0; margin-bottom: 50px; font-style: italic;">
+                La historia de mi rabanita, mi reina, mi todo 💕
+            </p>
             <div class="timeline">
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
@@ -1045,31 +1572,108 @@
 
         <!-- FINAL -->
         <section id="final" class="final-section">
-            <h2>💗 Mi Confesión Final 💗</h2>
+            <h2>💗 Mi Confesión Final Para Ti 💗</h2>
             <p class="final-message">
                 Te escribo esta página para que entiendas<br>
                 lo mucho que significas en mi vida<br>
-                Eres mi razón de sonreír cada día
+                Mi Rabanita, eres mi razón de sonreír cada día
             </p>
-            <div class="confession">Te Amo</div>
+            <div class="confession" style="font-size: 4rem; margin: 40px 0; letter-spacing: 2px;">
+                Te Amo, Mi Reina
+            </div>
             <p class="final-message">
+                Mi Pedacito de Cielo, con todo mi corazón<br>
                 Sin límites, sin condiciones<br>
-                Eres mi eternidad, amada mia ✨
+                Eres mi eternidad y mi todo ✨<br><br>
+                <strong style="font-size: 1.3rem; color: #ff69b4;">Tu Peque Que Te Adora 💕</strong>
             </p>
         </section>
     </div>
 
     <footer>
         <div class="footer-hearts">💗 💗 💗</div>
-        <p>Creado con todo mi amor para la persona más especial de mi vida</p>
+        <p>Creado con todo mi amor para ti, mi rabanita 🌹</p>
         <p>14 de Febrero de 2026</p>
-        <p>Te amo infinitamente ❤️</p>
+        <p style="font-size: 1.1rem; font-style: italic;">
+            Te amo infinitamente, mi reina ❤️<br>
+            Mi pedacito de cielo, eres mi todo 💕<br>
+            Tu peque siempre 💖
+        </p>
     </footer>
 
     <button id="scrollTop" onclick="scrollToTop()">↑</button>
     <div class="heart-rain" id="heartRain"></div>
 
     <script>
+        // Menú hamburguesa
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Cerrar menú al hacer click en un link
+        navMenu.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+        
+        // Carrusel de cartas para móvil
+        let currentLetterIndex = 0;
+        const lettersGrid = document.querySelector('.letters-grid');
+        const letterCards = document.querySelectorAll('.letter-card');
+        const lettersControls = document.getElementById('lettersControls');
+        const lettersPrev = document.getElementById('lettersPrev');
+        const lettersNext = document.getElementById('lettersNext');
+        const letterIndex = document.getElementById('letterIndex');
+        
+        function updateLettersCarousel() {
+            if (window.innerWidth <= 480) {
+                lettersGrid.classList.add('letters-carousel');
+                lettersControls.style.display = 'flex';
+                
+                // Usar el ancho real de las cartas
+                const cardWidth = letterCards[0]?.offsetWidth || window.innerWidth;
+                const scrollAmount = currentLetterIndex * cardWidth;
+                lettersGrid.scrollLeft = scrollAmount;
+                letterIndex.textContent = currentLetterIndex + 1;
+            } else {
+                lettersGrid.classList.remove('letters-carousel');
+                lettersControls.style.display = 'none';
+            }
+        }
+        
+        lettersPrev.addEventListener('click', () => {
+            if (currentLetterIndex > 0) {
+                currentLetterIndex--;
+                updateLettersCarousel();
+            }
+        });
+        
+        lettersNext.addEventListener('click', () => {
+            if (currentLetterIndex < letterCards.length - 1) {
+                currentLetterIndex++;
+                updateLettersCarousel();
+            }
+        });
+        
+        // Inicializar carrusel después de que carguen las imágenes/contenido
+        window.addEventListener('load', () => {
+            updateLettersCarousel();
+        });
+        
+        // Inicializar al cargar la página
+        updateLettersCarousel();
+        
+        // Actualizar al redimensionar
+        window.addEventListener('resize', () => {
+            updateLettersCarousel();
+        });
+        
         function scrollToSection(id) {
             const element = document.getElementById(id);
             if (element) element.scrollIntoView({ behavior: 'smooth' });
@@ -1291,6 +1895,15 @@
             const images = gallery.querySelectorAll('.heart-img');
             const indicators = document.querySelectorAll('.slider-indicator');
             
+            // Obtener tamaño responsivo del contenedor
+            const rect = gallery.getBoundingClientRect();
+            const containerWidth = rect.width;
+            const containerHeight = rect.height;
+            const centerX = containerWidth / 2;
+            const centerY = containerHeight / 2;
+            const isMobile = window.innerWidth <= 480;
+            const scale = isMobile ? 0.8 : 1.2;
+            
             // Crear forma de corazón
             images.forEach((img, index) => {
                 const totalImages = fotos.length;
@@ -1298,15 +1911,13 @@
                 
                 // Ecuación del corazón (cardioide paramétrica)
                 const t = angle;
-                const scale = 1.2;
                 let x = scale * 16 * Math.pow(Math.sin(t), 3);
                 let y = scale * (13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
                 
                 // Normalizar posición al contenedor
-                const centerX = 300;
-                const centerY = 300;
-                x = centerX + x * 15;
-                y = centerY - y * 15;
+                const multiplier = isMobile ? 10 : 15;
+                x = centerX + x * multiplier;
+                y = centerY - y * multiplier;
                 
                 // Calcular si es la imagen actual
                 const isActive = index === currentSlide;
@@ -1813,9 +2424,69 @@
             animate();
         }
 
+        // Crear efecto flotante de términos cariñosos
+        function createFloatingLove() {
+            const petNames = [
+                { text: 'mi rabanita', color: '#ff1a75' },
+                { text: 'mi reina', color: '#ffb4d1' },
+                { text: 'mi pedacito de cielo', color: '#ff69b4' },
+                { text: 'peque', color: '#ff1a75' },
+                { text: 'Te Amo', color: '#ffd700' }
+            ];
+
+            const randomName = petNames[Math.floor(Math.random() * petNames.length)];
+            const floatingText = document.createElement('div');
+            floatingText.style.position = 'fixed';
+            floatingText.style.left = Math.random() * window.innerWidth + 'px';
+            floatingText.style.top = window.innerHeight + 'px';
+            floatingText.style.fontSize = '1.5rem';
+            floatingText.style.color = randomName.color;
+            floatingText.style.fontWeight = 'bold';
+            floatingText.style.textShadow = '0 0 10px rgba(255, 26, 117, 0.6)';
+            floatingText.style.pointerEvents = 'none';
+            floatingText.style.zIndex = '999';
+            floatingText.textContent = randomName.text + ' 💕';
+            floatingText.style.opacity = '0.8';
+
+            document.body.appendChild(floatingText);
+
+            let opacity = 0.8;
+            let y = window.innerHeight;
+            const interval = setInterval(() => {
+                y -= 2;
+                opacity -= 0.01;
+                floatingText.style.top = y + 'px';
+                floatingText.style.opacity = opacity;
+
+                if (opacity <= 0) {
+                    clearInterval(interval);
+                    floatingText.remove();
+                }
+            }, 20);
+        }
+
+        // Generar palabras cariñosas flotantes cada cierto tiempo
+        setInterval(() => {
+            if (Math.random() > 0.6) {
+                createFloatingLove();
+            }
+        }, 3000);
+
         document.addEventListener('DOMContentLoaded', () => {
             initThreeGalaxy();
             initializeSlider();
+            
+            // Actualizar galería al redimensionar la ventana
+            window.addEventListener('resize', () => {
+                updateSlider();
+            });
+            
+            // Detectar cambios de orientación en móvil
+            window.addEventListener('orientationchange', () => {
+                setTimeout(() => {
+                    updateSlider();
+                }, 100);
+            });
         });
     </script>
 </body>
